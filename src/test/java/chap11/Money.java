@@ -9,16 +9,16 @@ public class Money {
         this.currency = currency;
     }
 
-    public Money times(int amount) {
-        return null;
-    }
-
-    static Money dollar(int amount) {
-        return new Dollar(amount, "USD");
+    public Money times(int multiplier) {
+        return new Money(amount * multiplier, currency());
     }
 
     static Money frank(int amount) {
-        return new Franc(amount, "CHF");
+        return new Money(amount, "CHF");
+    }
+
+    static Money dollar(int amount) {
+        return new Money(amount, "USD");
     }
 
     public boolean equals(Object object) {

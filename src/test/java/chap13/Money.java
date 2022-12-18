@@ -1,6 +1,6 @@
-package chap10;
+package chap13;
 
-public class Money {
+public class Money implements Expression {
     protected int amount;
     protected String currency;
 
@@ -13,12 +13,12 @@ public class Money {
         return new Money(amount * multiplier, currency());
     }
 
-    static Money dollar(int amount) {
-        return new Dollar(amount, "USD");
+    static Money frank(int amount) {
+        return new Money(amount, "CHF");
     }
 
-    static Money frank(int amount) {
-        return new Franc(amount, "CHF");
+    static Money dollar(int amount) {
+        return new Money(amount, "USD");
     }
 
     public boolean equals(Object object) {
@@ -34,5 +34,14 @@ public class Money {
     @Override
     public String toString() {
         return amount + " " + currency;
+    }
+
+    public Expression plus(Money addend) {
+        return new Sum(this, addend);
+    }
+
+    @Override
+    public Money reduce(String to) {
+        return this;
     }
 }
