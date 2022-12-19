@@ -1,4 +1,4 @@
-package chap14;
+package chap15;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -80,5 +80,21 @@ public class TddTest {
     @Test
     void testIdentityRate() {
         assertEquals(1, new Bank().rate("USD", "USD"));
+    }
+
+    @DisplayName("$5 + 10CHF = $10 테스트")
+    @Test
+    void testMixedAddition() {
+        // given
+        Expression fiveBacks = Money.dollar(5); // $5 (변경)
+        Expression tenFrancs = Money.frank(10); // 10CHF (변경)
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+
+        // when
+        Money result = bank.reduce(fiveBacks.plus(tenFrancs), "USD");
+
+        // then
+        assertEquals(Money.dollar(10), result);
     }
 }
