@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class TddTest {
 
-    @DisplayName("객체를 블랙박스 취급 테스트")
+    /*@DisplayName("객체를 블랙박스 취급 테스트")
     @Test
     void testBlackBoxObject() {
         // given
@@ -18,6 +18,6 @@ public class TddTest {
 
         // then
         assertEquals(Running.class, contract.status.class);
-    }
+    }*/
 
 }
