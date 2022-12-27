@@ -2,6 +2,7 @@ package chap30;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import chap16.Money;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import org.junit.jupiter.api.DisplayName;
@@ -92,6 +93,48 @@ public class TddTest {
         assertEquals(new Dollar(15), five.times(3));
     }*/
 
+    /*class Transaction {
+        Money value;
+
+        public Transaction(Money value) {
+            this.value = value;
+        }
+    }
 
 
+    class Account {
+        Transaction[] transactions;
+
+        public Money balance() {
+            Money sum = Money.zero();
+
+            for (Transaction transaction : transactions) {
+                sum = sum.plus(transaction.value);
+            }
+
+            return sum;
+        }
+    }*/
+
+    @DisplayName("덧셈 결과 출력 테스트")
+    @Test
+    void testSumPrinting() {
+        Sum sum = new Sum(Money.dollar(5), Money.franc(7));
+        assertEquals("+\n\t5 USD\n\t7 CHF", sum.toString());
+    }
+
+    public String toString() {
+        IndentingStream writer = new IndentingStream();
+        toString(writer);
+        return writer.contents();
+    }
+
+    private void toString(IndentingStream writer) {
+        writer.println("+");
+        writer.indent();
+        augend.toString(writer);
+        writer.println();
+        addend.toString(writer);
+        writer.exdent();
+    }
 }
