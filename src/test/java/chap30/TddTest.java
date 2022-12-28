@@ -116,7 +116,7 @@ public class TddTest {
         }
     }*/
 
-    @DisplayName("덧셈 결과 출력 테스트")
+    /*@DisplayName("덧셈 결과 출력 테스트")
     @Test
     void testSumPrinting() {
         Sum sum = new Sum(Money.dollar(5), Money.franc(7));
@@ -136,5 +136,5 @@ public class TddTest {
         writer.println();
         addend.toString(writer);
         writer.exdent();
-    }
+    }*/
 }
